@@ -5,7 +5,7 @@
 <div align="center">
   <h3>🚀 About Me</h3>
   <p>
-    🌱 I'm Lukasy
+    👋 I am Lukasy
   </p>
 </div>
 
@@ -26,10 +26,6 @@
 <br>
 
 <div align="center">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=Luk4sy&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000" />
-  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Luk4sy&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000" />
-</div>
-
-<div align="center">
-  <img src="https://github.com/Luk4sy/Luk4sy/raw/output/github-contribution-grid-snake.svg" alt="snake" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api?username=Luk4sy&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Luk4sy&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000" />
 </div>
