@@ -31,5 +31,5 @@
 </div>
 
 <div align="center">
-  <img src="https://github.com/platane/snk/raw/output/github-contribution-grid-snake.svg" alt="snake" />
+  <img src="https://github.com/Luk4sy/Luk4sy/raw/output/github-contribution-grid-snake.svg" alt="snake" />
 </div>
