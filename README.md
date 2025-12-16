@@ -9,6 +9,8 @@
   </p>
   <p>
     QQ: 302597565
+  </p>
+  <p>
     Email: auroraunity@163.com
   </p>
 </div>
