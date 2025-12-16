@@ -5,7 +5,7 @@
 <div align="center">
   <h3>🚀 About Me</h3>
   <p>
-    👋 I am Lukasy
+    Senior, Software Engineering, Tianjin University of Technology
   </p>
 </div>
 
