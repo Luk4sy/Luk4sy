@@ -7,6 +7,10 @@
   <p>
     Senior, Software Engineering, Tianjin University of Technology
   </p>
+  <p>
+    QQ: 302597565
+    Email: auroraunity@163.com
+  </p>
 </div>
 
 <br>
