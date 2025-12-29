@@ -31,7 +31,3 @@
 
 <br>
 
-<div align="center">
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=Luk4sy&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000" />
-  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Luk4sy&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000" />
-</div>
