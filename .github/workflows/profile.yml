@@ -1,0 +1,32 @@
+name: Refresh profile contributions
+on:
+  schedule:
+    - cron: '17 12 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/profile.yml'
+permissions:
+  contents: write
+concurrency:
+  group: profile-update
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate profile
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/generate-profile.py
+      - name: Save updated profile
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/profile.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh contribution calendar"
+            git push
+          fi
