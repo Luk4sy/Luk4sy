@@ -1,15 +1,28 @@
-import json,subprocess,datetime,html,xml.etree.ElementTree as ET
+import json,subprocess,datetime,html,hashlib,xml.etree.ElementTree as ET
 from pathlib import Path
 ET.register_namespace('', 'http://www.w3.org/2000/svg')
 root=Path(__file__).resolve().parents[1]
 config_path=root/'scripts/profile-config.json'
 if not config_path.exists(): config_path=Path('work/profile-config.json')
 config=json.loads(config_path.read_text())
-query='query { user(login:"Luk4sy") { contributionsCollection { contributionCalendar { weeks { contributionDays { date contributionCount contributionLevel weekday } } } } } }'
+query='query { user(login:"Luk4sy") { contributionsCollection { contributionCalendar { totalContributions weeks { contributionDays { date contributionCount contributionLevel weekday } } } } } }'
 p=subprocess.run(['gh','api','graphql','-f','query='+query],capture_output=True,text=True,check=True)
 data=json.loads(p.stdout)
 if data.get('errors'): raise RuntimeError(data['errors'])
-weeks=data['data']['user']['contributionsCollection']['contributionCalendar']['weeks']
+calendar=data['data']['user']['contributionsCollection']['contributionCalendar']
+cache_path=root/'assets/contribution-calendar.json'
+if not (root/'scripts').exists(): cache_path=Path('work/contribution-calendar.json')
+if cache_path.exists():
+ cached=json.loads(cache_path.read_text())
+ old_days={d['date']:d['contributionCount'] for w in cached['weeks'] for d in w['contributionDays']}
+ current_days={d['date']:d['contributionCount'] for w in calendar['weeks'] for d in w['contributionDays']}
+ overlap=set(old_days)&set(current_days)
+ old_sum=sum(old_days[d] for d in overlap); new_sum=sum(current_days[d] for d in overlap)
+ if old_sum>100 and new_sum<old_sum*0.5:
+  raise RuntimeError('Contribution data is incomplete; refusing to overwrite the full calendar. Check PROFILE_READ_TOKEN read:user permission.')
+cache_path.parent.mkdir(parents=True,exist_ok=True)
+cache_path.write_text(json.dumps(calendar))
+weeks=calendar['weeks']
 assert 50 <= len(weeks) <= 54
 parts=['''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="835" viewBox="0 0 900 835" role="img" aria-labelledby="title desc">
 <title id="title">Lukasy | Education, Tech Stack and GitHub Contributions</title>
@@ -55,7 +68,7 @@ for i,(label,items) in enumerate(config['rows']):
  assert x<880,(label,x)
 parts.append('<path d="M34 588H866" stroke="#21262d"/>')
 command(620,'git log --contributions')
-text(35,645,'Recent Contributions','#f0f6fc',14)
+text(35,645,f"{calendar['totalContributions']:,} contributions in the last year",'#f0f6fc',14)
 text(865,645,'PAST 12 MONTHS','#8b949e',10,'text-anchor="end"')
 colors={'NONE':'#161b22','FIRST_QUARTILE':'#0e4429','SECOND_QUARTILE':'#006d32','THIRD_QUARTILE':'#26a641','FOURTH_QUARTILE':'#39d353'}
 for day,label in [(1,'Mon'),(3,'Wed'),(5,'Fri')]:text(34,690+day*15,label,'#8b949e',9)
@@ -76,4 +89,15 @@ svg=''.join(parts);ET.fromstring(svg)
 out=root/'assets/profile.svg'
 if not (root/'scripts').exists():out=Path('work/profile.svg')
 out.parent.mkdir(parents=True,exist_ok=True);out.write_text(svg)
+version=hashlib.sha256(svg.encode()).hexdigest()[:12]
+version_path=out.parent/f'profile-{version}.svg'
+version_path.write_text(svg)
+if (root/'scripts').exists():
+ for stale in out.parent.glob('profile-????????????.svg'):
+  if stale!=version_path: stale.unlink()
+ readme=root/'README.md'
+ content=readme.read_text()
+ import re
+ content=re.sub(r'src="\./assets/profile(?:-color)?(?:-[a-f0-9]{12})?\.svg"',f'src="./assets/profile-{version}.svg"',content)
+ readme.write_text(content)
 print('Generated',len(weeks),'weeks into',out)
