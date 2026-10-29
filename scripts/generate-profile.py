@@ -34,6 +34,7 @@ text(35,250,'MScTP · The Hong Kong University of Science and Technology (Guangz
 text(35,279,'contact → luk4sy@gmail.com','#58a6ff',12)
 parts.append('<path d="M34 303H866" stroke="#21262d"/>')
 command(336,'cat tech-stack.json')
+brand_colors = {'typescript': '#3178C6', 'react': '#61DAFB', 'nextdotjs': '#FFFFFF', 'vuedotjs': '#4FC08D', 'tailwindcss': '#38BDF8', 'go': '#00ADD8', 'gin': '#00ADD8', 'openjdk': '#ED8B00', 'springboot': '#6DB33F', 'python': '#FFD43B', 'fastapi': '#00C7B7', 'nodedotjs': '#5FA04E', 'mysql': '#4EA9D6', 'postgresql': '#699ECA', 'redis': '#FF4438', 'docker': '#2496ED', 'linux': '#FCC624', 'codex': '#FFFFFF', 'claude': '#D97757', 'cursor': '#FFFFFF', 'dsh': '#6C8CFF'}
 for i,(label,items) in enumerate(config['rows']):
  y=359+i*55
  text(35,y+15,label,'#8b949e',11)
@@ -42,11 +43,12 @@ for i,(label,items) in enumerate(config['rows']):
   width=round(len(name)*6.0+ (34 if key in config['icons'] else 20))
   parts.append(f'<rect x="{x}" y="{y}" width="{width}" height="27" rx="5" fill="#161b22" stroke="#30363d"/>')
   if key in config['icons']:
-   icon=ET.fromstring(config['icons'][key]); icon.set('x',str(x+8));icon.set('y',str(y+6));icon.set('width','14');icon.set('height','14'); icon.set('fill','#c9d1d9');icon.set('color','#c9d1d9')
+   brand_color=brand_colors.get(key,'#c9d1d9')
+   icon=ET.fromstring(config['icons'][key]); icon.set('x',str(x+8));icon.set('y',str(y+6));icon.set('width','14');icon.set('height','14'); icon.set('fill',brand_color);icon.set('color',brand_color)
    for node in icon.iter():
     for attr in ['fill','stroke']:
      val=node.get(attr)
-     if val and val!='none': node.set(attr,'#c9d1d9')
+     if val and val!='none': node.set(attr,brand_color)
    parts.append(ET.tostring(icon,encoding='unicode'))
   text(x+(28 if key in config['icons'] else 10),y+17,name,'#e6edf3',10)
   x+=width+7
