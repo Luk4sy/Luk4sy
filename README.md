@@ -1,15 +1,16 @@
 <div align="center">
 
-# Hi, I'm Lukasy
-
-**HKUST-GZ**
-
-<a href="mailto:luk4sy@gmail.com">luk4sy@gmail.com</a>
+<img src="./assets/profile-terminal.svg" width="900" alt="Terminal profile: Lukasy at HKUST-GZ. Building with code and AI." />
 
 <br />
 
+<a href="mailto:luk4sy@gmail.com">luk4sy@gmail.com</a>
+
+<br /><br />
+
 ### Tech Stack
 
+<p><strong>Frontend</strong></p>
 <p>
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/React-20232A?style=flat-square&amp;logo=react&amp;logoColor=white" alt="React" />
@@ -18,6 +19,7 @@
   <img src="https://img.shields.io/badge/Tailwind%20CSS-0891B2?style=flat-square&amp;logo=tailwindcss&amp;logoColor=white" alt="Tailwind CSS" />
 </p>
 
+<p><strong>Backend</strong></p>
 <p>
   <img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=go&amp;logoColor=white" alt="Go" />
   <img src="https://img.shields.io/badge/Gin-008ECF?style=flat-square&amp;logo=gin&amp;logoColor=white" alt="Gin" />
@@ -28,6 +30,7 @@
   <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js" />
 </p>
 
+<p><strong>Infrastructure</strong></p>
 <p>
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&amp;logo=mysql&amp;logoColor=white" alt="MySQL" />
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL" />
@@ -36,6 +39,7 @@
   <img src="https://img.shields.io/badge/Linux-333333?style=flat-square&amp;logo=linux&amp;logoColor=white" alt="Linux" />
 </p>
 
+<p><strong>AI Toolkit</strong></p>
 <p>
   <img src="./assets/codex-badge.svg" alt="Codex" />
   <img src="https://img.shields.io/badge/Claude%20Code-D97757?style=flat-square&amp;logo=claude&amp;logoColor=white" alt="Claude Code" />
