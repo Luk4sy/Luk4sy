@@ -8,7 +8,7 @@
 
 <br />
 
-### 技术栈
+### Tech Stack
 
 <p>
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="TypeScript" />
