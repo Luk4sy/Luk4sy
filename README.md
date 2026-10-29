@@ -36,10 +36,10 @@
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/Codex-111111?style=flat-square" alt="Codex" />
+  <img src="./assets/codex-badge.svg" alt="Codex" />
   <img src="https://img.shields.io/badge/Claude%20Code-D97757?style=flat-square&amp;logo=claude&amp;logoColor=white" alt="Claude Code" />
-  <img src="https://img.shields.io/badge/Cursor-333333?style=flat-square" alt="Cursor" />
-  <img src="https://img.shields.io/badge/DeepSeek%20Harness-4D6BFE?style=flat-square" alt="DeepSeek Harness" />
+  <img src="./assets/cursor-badge.svg" alt="Cursor" />
+  <img src="./assets/dsh-badge.svg" alt="DeepSeek Harness" />
 </p>
 
 </div>
